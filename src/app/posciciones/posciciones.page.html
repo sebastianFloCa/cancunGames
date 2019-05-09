@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title text-center>Posciciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list >
+    <ion-item >
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2">
+            <b>#</b>
+          </ion-col>
+          <ion-col size="3">
+            <b>Foto</b>
+         </ion-col>
+          <ion-col size="4">
+            <b>Nombre</b>
+          </ion-col>
+          <ion-col size="3">
+            <b>Puntos</b>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngFor="let pos of PS.posciciones">
+  
+      <!--1er Lugar-->
+      <ion-item *ngIf="pos.fields.Lugar === 1" color="success" >
+          <ion-grid>
+            <ion-row>
+              <ion-col size="2">
+                {{pos.fields.Lugar}}.
+              </ion-col>
+              <ion-col size="3">
+                <ion-chip>
+                  <ion-avatar>
+                    <img src="https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14044.jpg">
+                  </ion-avatar>
+                </ion-chip>
+              </ion-col>
+              <ion-col size="5">
+                {{pos.fields.Nombre}}
+              </ion-col>
+              <ion-col size="2">
+                {{pos.fields.Puntos}}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+         <!--2do Lugar-->
+      <ion-item *ngIf="pos.fields.Lugar === 2" color="warning" >
+          <ion-grid>
+            <ion-row>
+              <ion-col size="2">
+                {{pos.fields.Lugar}}.
+              </ion-col>
+              <ion-col size="3">
+                <ion-chip>
+                  <ion-avatar>
+                    <img src="https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14044.jpg">
+                  </ion-avatar>
+                </ion-chip>
+              </ion-col>
+              <ion-col size="5">
+                {{pos.fields.Nombre}}
+              </ion-col>
+              <ion-col size="2">
+                {{pos.fields.Puntos}}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+         <!--3er Lugar-->
+      <ion-item *ngIf="pos.fields.Lugar === 3" color="tertiary" >
+          <ion-grid>
+            <ion-row>
+              <ion-col size="2">
+                {{pos.fields.Lugar}}.
+              </ion-col>
+              <ion-col size="3">
+                <ion-chip>
+                  <ion-avatar>
+                    <img src="https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14044.jpg">
+                  </ion-avatar>
+                </ion-chip>
+              </ion-col>
+              <ion-col size="5">
+                {{pos.fields.Nombre}}
+              </ion-col>
+              <ion-col size="2">
+                {{pos.fields.Puntos}}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+    <!--Posiciones normales-->
+    <ion-item *ngIf="pos.fields.Lugar > 3" >
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2">
+            {{pos.fields.Lugar}}.
+          </ion-col>
+          <ion-col size="3">
+            <ion-chip>
+              <ion-avatar>
+                <img src="https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14044.jpg">
+              </ion-avatar>
+            </ion-chip>
+          </ion-col>
+          <ion-col size="5">
+            {{pos.fields.Nombre}}
+          </ion-col>
+          <ion-col size="2">
+            {{pos.fields.Puntos}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+
+  </ion-list>
+
+</ion-content>

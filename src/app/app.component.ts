@@ -12,7 +12,7 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Home',
-      url: '/home',
+      url: '/tabs/home',
       icon: 'home'
     },
     {
@@ -27,12 +27,15 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
+    this.statusBar.show();
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
+      this.statusBar.overlaysWebView(true);
+      this.statusBar.backgroundColorByHexString('#09419b');
       this.splashScreen.hide();
     });
   }
