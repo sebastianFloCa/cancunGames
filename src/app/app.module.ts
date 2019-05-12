@@ -12,18 +12,38 @@ import { AppRoutingModule } from './app-routing.module';
 // HTTP
 import { HttpClientModule } from '@angular/common/http';
 
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import {firebase} from '../app/firebaseConfig';
+
+// plugins
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IonicStorageModule } from '@ionic/storage';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebase),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    AngularFirestoreModule,
+    Facebook,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

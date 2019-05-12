@@ -1,5 +1,7 @@
 {
   "name": "cancunGames",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

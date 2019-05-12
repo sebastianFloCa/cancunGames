@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: 'resultados', loadChildren: './resultados/resultados.module#ResultadosPageModule' },
   { path: 'contacto', loadChildren: './contacto/contacto.module#ContactoPageModule' },
-  { path: 'posciciones/:id', loadChildren: './posciciones/posciciones.module#PoscicionesPageModule' }
+  { path: 'posciciones/:id', loadChildren: './posciciones/posciciones.module#PoscicionesPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
 ];
 
 @NgModule({
