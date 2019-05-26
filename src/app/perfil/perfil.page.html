@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-toolbar>
+        <br>
+          <ion-title text-center color="light">
+              Perfil
+          </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <br> <br>
+  <div calss="adjustImage">
+      <img class="adjustImage" [src]="US.user.portadaImg" alt="Foto perfil de usuario">
+  </div>
+  <br>
+  <ion-grid>
+      <ion-row>
+        <ion-col size="2"></ion-col>
+        <ion-col size="8">
+          <ion-button text-center class="butons" shape="round" color="danger"> 
+            DIVISIÓN: {{US.user.division}}
+          </ion-button>
+        </ion-col>
+        <ion-col size="2"></ion-col>
+      </ion-row>  
+  </ion-grid>
+    
+    <ion-grid>
+        <ion-row>
+          <ion-col size="2"></ion-col>
+          <ion-col size="8">
+            <ion-button text-center class="butons" shape="round" color="danger"> 
+              EDAD: {{US.user.edad}}
+            </ion-button>
+          </ion-col>
+          <ion-col size="2"></ion-col>
+        </ion-row>  
+    </ion-grid>
+
+    <ion-grid>
+          <ion-row>
+            <ion-col size="2"></ion-col>
+            <ion-col size="8">
+              <ion-button text-center class="butons" shape="round" color="danger"> 
+                ESTATURA: {{US.user.estatura}}
+              </ion-button>
+            </ion-col>
+            <ion-col size="2"></ion-col>
+          </ion-row>  
+    </ion-grid>
+  
+    <ion-grid>
+            <ion-row>
+              <ion-col size="2"></ion-col>
+              <ion-col size="8">
+                <ion-button text-center class="butons" shape="round" color="danger"> 
+                  PESO: {{US.user.peso}}
+                </ion-button>
+              </ion-col>
+              <ion-col size="2"></ion-col>
+            </ion-row>  
+    </ion-grid>
+      
+    <ion-grid>
+              <ion-row>
+                <ion-col size="2"></ion-col>
+                <ion-col size="8">
+                  <ion-button text-center class="butons" shape="round" color="danger"> 
+                    BOX: {{US.user.box}}
+                  </ion-button>
+                </ion-col>
+                <ion-col size="2"></ion-col>
+              </ion-row>  
+    </ion-grid>
+</ion-content>

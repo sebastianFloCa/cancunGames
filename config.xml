@@ -3,7 +3,7 @@
     <name>CancunGames</name>
     <description>App to show laderboards of results for CancunGames</description>
     <author email="jsfc@gmail.com" href="https://www.facebook.com/SebasFloCa">Sebastian Flores Campos</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.1.43:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -87,4 +87,7 @@
         <variable name="APP_NAME" value="CancunGames" />
     </plugin>
     <plugin name="cordova-sqlite-storage" spec="^3.2.0" />
+    <plugin name="onesignal-cordova-plugin" spec="^2.4.7" />
+    <allow-navigation href="http://192.168.1.43:8100" sessionid="6f37fb65" />
+    <engine name="android" spec="7.0.0" />
 </widget>

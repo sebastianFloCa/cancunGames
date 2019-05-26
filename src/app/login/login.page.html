@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar color="danger">
+      <br>
     <ion-title text-center>Login</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -70,7 +71,7 @@
 
       <ion-item>
           <ion-label color="light"> Snatch </ion-label>
-          <ion-input required type="number" [(ngModel)]="Snatch"></ion-input>
+          <ion-input required type="number" [(ngModel)]="snatch"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -82,6 +83,24 @@
           Completar perfil
       </ion-button>
 
+    </div>
+
+    <div *ngIf="registerComplete">
+            <h2 text-center color="light">Ultimo Paso:</h2>
+            <br>
+        <ion-button color="danger" shape="round" expand="block" (click)="selectPhoto(1)"> 
+                    Elegir foto de Perfil
+        </ion-button>
+        <ion-button color="danger" shape="round" expand="block" (click)="selectPhoto(2)"> 
+                Elegir foto de Portada
+        </ion-button>
+    </div>
+    <div *ngIf="finish">
+            <h2 text-center color="light">Listo !!!:</h2>
+            <br>
+            <ion-button color="danger" shape="round" expand="block" (click)="endProcess()"> 
+                    Disfrutar de CancunGames
+            </ion-button>
     </div>
 
 </ion-content>

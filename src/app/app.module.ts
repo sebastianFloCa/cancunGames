@@ -23,6 +23,10 @@ import {firebase} from '../app/firebaseConfig';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicStorageModule } from '@ionic/storage';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { HomePage } from './home/home.page';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,6 +48,9 @@ import { IonicStorageModule } from '@ionic/storage';
     SplashScreen,
     AngularFirestoreModule,
     Facebook,
+    OneSignal,
+    HomePage,
+    ImagePicker,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

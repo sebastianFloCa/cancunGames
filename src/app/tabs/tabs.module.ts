@@ -26,7 +26,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        loadChildren: '../home/home.module#HomePageModule'
+        loadChildren: '../resultados/resultados.module#ResultadosPageModule'
       }
     ]
   }
