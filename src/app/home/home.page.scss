@@ -5,7 +5,7 @@
 
 .background{
 
-  --background: url(../../assets/bg1.jpg) 0 0/100% 100% no-repeat;
+  --background: url(../../assets/bg.jpg) 0 0/100% 100% no-repeat;
  /*
    -webkit-filter: blur(5px);
    -moz-filter: blur(5px);
@@ -27,7 +27,7 @@
   width:  65vw;
   height: 44vw;
   left: 150px;
-  border:10px solid #0ae22e;
+  border:10px solid #f30a0a;
   border-radius: 50%; // half for rounding */
   object-fit: cover; /* Scale the image - Center and crop image*/
 }

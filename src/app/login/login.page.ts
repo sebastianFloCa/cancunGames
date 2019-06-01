@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { ToastController, Platform } from '@ionic/angular';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import {UserService} from '../services/userService/user.service';
 import { Storage } from '@ionic/storage';
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -81,7 +82,8 @@ export class LoginPage implements OnInit {
   constructor(private afAuth: AngularFireAuth, private toastCtrl: ToastController,
               private platformCtrl: Platform, private FB: Facebook,
               private router: Router, public US: UserService, private storage: Storage,
-              private  IP: ImagePicker, private platform: Platform) { }
+              private  IP: ImagePicker, private platform: Platform,
+              private alertCtrl: AlertController, private zone: NgZone) { }
 
   ngOnInit() {
     // init the page
@@ -96,8 +98,38 @@ export class LoginPage implements OnInit {
             }
           });
         }
+        this.captureCode();
       });
     });
+  }
+
+  async captureCode() {
+           // ask for the code here
+           console.log('lets check the code');
+           const alerta = await this.alertCtrl.create({
+            header: 'Introduce tu codigo de activación:',
+            inputs: [
+              {
+                name: 'code',
+                type: 'text',
+                placeholder: 'tu codigo aquí'
+              }
+            ],
+            buttons: [
+              {
+                text: 'Activar',
+                handler: data => {
+                  this.zone.run(async () => {
+                    console.log('Confirm Ok ' + JSON.stringify(data));
+                    this.US.checkUserCode(data.code).catch( () => {
+                      this.captureCode();
+                    });
+                  });
+                }
+              }
+            ]
+          });
+           await alerta.present();
   }
 
   signInWithFacebook() {
@@ -222,7 +254,7 @@ export class LoginPage implements OnInit {
           });
         }
         this.imgCounter = this.imgCounter + 1;
-        if ( this.imgCounter === 2) {
+        if ( this.imgCounter === 3) {
           this.finish = true;
         }
       } else {

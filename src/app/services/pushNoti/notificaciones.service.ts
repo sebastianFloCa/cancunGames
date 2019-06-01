@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
-
+import {UserService} from '../userService/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificacionesService {
 
-  constructor(private oneSignal: OneSignal) {
+  userId: string;
+
+  constructor(private oneSignal: OneSignal, private  US: UserService) {
   }
 
   configuracionPush() {
@@ -26,7 +28,11 @@ export class NotificacionesService {
       // do something when a notification is opened
       console.log('Noti opened: ', noti);
     });
-
+    // obtener el ID de usuario de Notificaciones
+    this.oneSignal.getIds().then( info => {
+      this.userId = info.userId;
+      this.US.setOSId(info.userId);
+    });
     this.oneSignal.endInit();
   }
 }

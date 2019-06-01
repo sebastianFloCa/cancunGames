@@ -4,9 +4,9 @@ import { Storage } from '@ionic/storage';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 import * as firebase from 'firebase';
 import { FirebaseStorage } from '@angular/fire';
+import { LoadingController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,8 @@ export class UserService {
   user: any;
   codes = [];
   urlImage: string;
+  userCode: string;
+  notiId: string;
 
   constructor( private FS: AngularFirestore, private storageCtrl: Storage,
                private toastCtrl: ToastController, private router: Router,
@@ -56,6 +58,8 @@ export class UserService {
         cleanJerk: data.cleanJerk,
         snatch: data.snatch,
         deadlift: data.deadlift,
+        code: this.userCode,
+        notificationId: this.notiId
       }).then( () => {
         // here we know the user were added successfully
         console.log('Added Correctly user to Backend');
@@ -268,6 +272,42 @@ export class UserService {
     }).catch( (e) => {
       this.presentToast('Error: comunicate con los administradores o revisa tu conexión: ' + JSON.stringify(e));
     });
+  }
+
+  async checkUserCode( code: string ) {
+    const load = await this.loadingController.create({
+      message: 'Revisando Codigo',
+    });
+    await load.present();
+    const promesa = new Promise( (resolve, reject) => {
+      this.FS.collection('codes').doc(code).get()
+      .forEach(dato => {
+        if ( dato.exists ) {
+          // here we know that  the code is valid
+          this.userCode = code;
+          this.FS.collection('codes').doc(code).delete().then( res =>  {
+            // here we know we erase the code from table generic
+            console.log('the code has been erased');
+            this.mostrarToast('Tu codigo es valido!!!');
+            resolve();
+          }).catch( e => {
+            console.log('Somethig fail erasing the code');
+            reject();
+          });
+        }
+        // this.mostrarToast('Tu codigo es Invalido!!!');
+        // reject();
+      }).catch( e => {
+        console.log('Something wrong getting the code in the table');
+        reject();
+      });
+    });
+    await load.dismiss();
+    return promesa;
+  }
+
+  setOSId(id: string) {
+    this.notiId = id;
   }
 
 }
