@@ -73,6 +73,7 @@ export class LoginPage implements OnInit {
   deadlift: number;
   fbData: any = {};
   imagen: any;
+  camiseta: string;
   public displayAchievement: boolean;
   public databoolean: boolean;
   public registerComplete: boolean;
@@ -97,8 +98,9 @@ export class LoginPage implements OnInit {
               this.router.navigate(['/home']);
             }
           });
+        } else {
+          this.captureCode();
         }
-        this.captureCode();
       });
     });
   }
@@ -193,6 +195,7 @@ export class LoginPage implements OnInit {
       box: this.box,
       division: this.division,
       telefono: this.telefono,
+      camiseta: this.camiseta,
       backSquat: this.backSquat,
       cleanJerk: this.cleanJerk,
       snatch: this.snatch,

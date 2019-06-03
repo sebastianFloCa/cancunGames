@@ -54,6 +54,7 @@ export class UserService {
         box: data.box,
         division: data.division,
         telefono: data.telefono,
+        camiseta: data.camiseta,
         backSquat: data.backSquat,
         cleanJerk: data.cleanJerk,
         snatch: data.snatch,
