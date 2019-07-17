@@ -21,7 +21,8 @@ const routes: Routes = [
   { path: 'posciciones/:id', loadChildren: './posciciones/posciciones.module#PoscicionesPageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'benchmark', loadChildren: './benchmark/benchmark.module#BenchmarkPageModule' },
-  { path: 'perfil', loadChildren: './perfil/perfil.module#PerfilPageModule' }
+  { path: 'perfil', loadChildren: './perfil/perfil.module#PerfilPageModule' },
+  { path: 'wod/:id', loadChildren: './wod/wod.module#WodPageModule' }
 ];
 
 @NgModule({

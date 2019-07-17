@@ -18,45 +18,51 @@
 
     </div>
     <br> <br>
-    <ion-button shape="round" expand="block" (click)="signInWithFacebook()"> 
+    <!--
+          <ion-button shape="round" expand="block" (click)="signInWithFacebook()"> 
         <ion-icon slot="start" name="logo-facebook"></ion-icon>
       Login with facebook 
     </ion-button>
+    -->
     <br>
-    <div *ngIf="databoolean">
+    <div *ngIf="databoolean" class="transparent">
       <h2 text-center color="light">Completa tu registro:</h2>
       <br>
-      <ion-item>
+      <ion-item color="transparent">
+        <ion-label color="light"> Nombre </ion-label>
+        <ion-input required type="text" [(ngModel)]="nombre"></ion-input>
+      </ion-item>
+      <ion-item color="transparent">
         <ion-label color="light"> Edad </ion-label>
         <ion-input required type="number" [(ngModel)]="edad"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item color="transparent">
           <ion-label color="light"> Estatura </ion-label>
           <ion-input placeholder="cm" required type="number" [(ngModel)]="estatura"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item color="transparent">
           <ion-label color="light"> Peso </ion-label>
           <ion-input placeholder="kg" required type="number" [(ngModel)]="peso"></ion-input>
       </ion-item>
       
-      <ion-item>
+      <ion-item color="transparent">
           <ion-label color="light"> Box </ion-label>
           <ion-input required type="text" [(ngModel)]="box"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item color="transparent">
           <ion-label color="light"> Division </ion-label>
           <ion-input required type="text" [(ngModel)]="division"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item color="transparent">
           <ion-label color="light"> Telefono </ion-label>
           <ion-input required type="number" [(ngModel)]="telefono"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item color="transparent">
             <ion-label color="light"> Nombre en camiseta </ion-label>
             <ion-input required placeholder="max. 10 letras" type="text" [(ngModel)]="camiseta"></ion-input>
       </ion-item>
@@ -64,22 +70,22 @@
       <br>
       <h2 text-center color="light">Records (lbs):</h2>
 
-      <ion-item>
+      <ion-item color="transparent">
           <ion-label color="light"> Back squat </ion-label>
           <ion-input required type="number" [(ngModel)]="backSquat"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item color="transparent">
           <ion-label color="light"> Clean and Jerk </ion-label>
           <ion-input required type="number" [(ngModel)]="cleanJerk"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item color="transparent">
           <ion-label color="light"> Snatch </ion-label>
           <ion-input required type="number" [(ngModel)]="snatch"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item color="transparent">
           <ion-label color="light"> Deadlift </ion-label>
           <ion-input required type="number" [(ngModel)]="deadlift"></ion-input>
       </ion-item>

@@ -4,27 +4,27 @@ import {PositionsService} from '../services/airTable/positions.service';
 import { LoadingController, Platform } from '@ionic/angular';
 
 @Component({
-  selector: 'app-posciciones',
-  templateUrl: './posciciones.page.html',
-  styleUrls: ['./posciciones.page.scss'],
+  selector: 'app-wod',
+  templateUrl: './wod.page.html',
+  styleUrls: ['./wod.page.scss'],
 })
-export class PoscicionesPage implements OnInit {
+export class WodPage implements OnInit {
   id: string;
   constructor(private route: ActivatedRoute, public PS: PositionsService,
               public loadingController: LoadingController, private platform: Platform,
               private router: Router) {
-                  this.presentLoading();
-                  this.platform.ready().then( () => {
-                    this.platform.backButton.subscribe( () => {
-                      this.router.navigate(['/tabs']);
-                    });
+                this.presentLoading();
+                this.platform.ready().then( () => {
+                  this.platform.backButton.subscribe( () => {
+                    this.router.navigate(['/tabs']);
                   });
+                });
                }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     console.log('id: ', this.id);
-    this.PS.getcategoria(this.id);
+    this.PS.getwod(this.id);
   }
 
   async presentLoading() {

@@ -12,7 +12,7 @@ export class PositionsService {
   private apiKey = 'keydVLRkeik08u047';
 private sort = '&sort%5B0%5D%5Bfield%5D=Lugar&sort%5B0%5D%5Bdirection%5D=asc';
   posciciones = [];
-
+  wod = [];
   constructor( private http: HttpClient, public loadingController: LoadingController) { }
 
   getcategoria(id: string) {
@@ -27,6 +27,19 @@ private sort = '&sort%5B0%5D%5Bfield%5D=Lugar&sort%5B0%5D%5Bdirection%5D=asc';
                 }
              });
   }
+
+  getwod(id: string) {
+    // this.presentLoading();
+      this.http.get('https://api.airtable.com/v0/app1GIrkM7dCxuUfg/wod' + id + '?api_key=' + this.apiKey + this.sort)
+               .pipe(map(res => res)).subscribe( data => {
+                  if ( data ) {
+                    // console.log(data);
+                    // tslint:disable-next-line:no-string-literal
+                    this.wod.push(...data['records']);
+                    console.log(this.wod);
+                  }
+               });
+    }
 
   async presentLoading() {
     const loading = await this.loadingController.create({

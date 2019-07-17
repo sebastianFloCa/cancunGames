@@ -62,6 +62,7 @@ import { AlertController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   box: string;
+  nombre: string;
   peso: string;
   estatura: number;
   division: string;
@@ -99,10 +100,24 @@ export class LoginPage implements OnInit {
             }
           });
         } else {
+          this.databoolean = true;
           this.captureCode();
+          this.presentAlert();
         }
       });
     });
+  }
+
+  async presentAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'IMPORTANTE!!!',
+      subHeader: 'Lee con atención:',
+      // tslint:disable-next-line:max-line-length
+      message: 'La aplicación brinda retroalimentación en todo momento, porfavor, cada que presiones un botón espera a que la aplicación te muestre un mensaje de exito, de lo contrario tu registro y subidas de fotos no se llevará a cabo. Todos los campos del formulario son obligatorios, cada que subas una foto debes esperar a que la app te muestre el mensaje de que tu foto ha sido enlazada a tu perfil correctamente para proceder a subir la siguiente.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   async captureCode() {
@@ -110,6 +125,7 @@ export class LoginPage implements OnInit {
            console.log('lets check the code');
            const alerta = await this.alertCtrl.create({
             header: 'Introduce tu codigo de activación:',
+            backdropDismiss: false,
             inputs: [
               {
                 name: 'code',
@@ -124,13 +140,15 @@ export class LoginPage implements OnInit {
                   this.zone.run(async () => {
                     console.log('Confirm Ok ' + JSON.stringify(data));
                     this.US.checkUserCode(data.code).catch( () => {
+                      this.presentToast('TU CODIGO NO ES VALIDO!!!!!');
                       this.captureCode();
                     });
                   });
                 }
               }
             ]
-          });
+          }
+          );
            await alerta.present();
   }
 
@@ -189,6 +207,7 @@ export class LoginPage implements OnInit {
   completeRegister() {
     console.log('empezando proceso de mandar info');
     const perfil = {
+      nombre: this.nombre,
       edad: this.edad,
       estatura: this.estatura,
       peso: this.peso,

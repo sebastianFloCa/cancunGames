@@ -43,11 +43,16 @@ export class UserService {
   addUser(data: any) {
     // here we are going to upload the user to google firebase
     const promesa =  new Promise( (resolve, reject) => {
-      this.FS.collection('user').doc(this.userId).set({
-        nombre: this.fbData.name,
-        correo: this.fbData.mail,
-        usuarioId: this.fbData.user,
-        fotoRef: this.fbData.photo,
+      this.FS.collection('user').doc(this.userCode).set({
+        nombre: data.nombre,
+        correo: 'no-mail',
+        wod1: 'disponible posteriormente',
+        wod2: 'disponible posteriormente',
+        wod3: 'disponible posteriormente',
+        wod4: 'disponible posteriormente',
+        wod5: 'disponible posteriormente',
+        totalpts: 'disponible posteriormente',
+        usuarioId: this.userCode,
         edad: data.edad,
         estatura: data.estatura,
         peso: data.peso,
@@ -64,7 +69,7 @@ export class UserService {
       }).then( () => {
         // here we know the user were added successfully
         console.log('Added Correctly user to Backend');
-        this.storageCtrl.set('user', this.userId).then( res => {
+        this.storageCtrl.set('user', this.userCode).then( res => {
           console.log('user register in localstorage: ', res);
         }).catch( e => {
           console.log('something went wrong adding user to localstorage');
@@ -202,7 +207,7 @@ export class UserService {
 
   addUrl(url: string) {
     console.log('entro a agergar url de perfil');
-    this.FS.collection('user').doc(this.userId).update({
+    this.FS.collection('user').doc(this.userCode).update({
       profileImg: url
     }).then( () => {
       this.presentToast('La imagen ha sido enlazada correctamente a tu perfil');
@@ -266,7 +271,7 @@ export class UserService {
   }
 
  addUrlPortada(url: string) {
-    this.FS.collection('user').doc(this.userId).update({
+    this.FS.collection('user').doc(this.userCode).update({
       portadaImg: url
     }).then( () => {
       this.presentToast('La imagen ha sido enlazada correctamente a tu perfil');
@@ -286,10 +291,11 @@ export class UserService {
         if ( dato.exists ) {
           // here we know that  the code is valid
           this.userCode = code;
+          this.mostrarToast('Tu codigo es valido!!!');
           this.FS.collection('codes').doc(code).delete().then( res =>  {
             // here we know we erase the code from table generic
             console.log('the code has been erased');
-            this.mostrarToast('Tu codigo es valido!!!');
+            // this.mostrarToast('Tu codigo es valido!!!');
             resolve();
           }).catch( e => {
             console.log('Somethig fail erasing the code');

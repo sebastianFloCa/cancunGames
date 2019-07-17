@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
+import { UserService } from '../services/userService/user.service';
+import { HomePage } from '../home/home.page';
+import { PositionsService } from '../services/airTable/positions.service';
 
 @Component({
   selector: 'app-list',
@@ -20,14 +26,18 @@ export class ListPage implements OnInit {
     'build'
   ];
   public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor() {
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+  constructor(private platform: Platform, private router: Router,
+              public US: UserService, private home: HomePage,
+              private PS: PositionsService) {
+                this.platform.ready().then( () => {
+                  this.platform.backButton.subscribe( () => {
+                    this.router.navigate(['/home']);
+                  });
+              });
+                this.PS.presentLoading();
+                this.US.getUser().then( () => {
+                  console.log('usuario en bencmark: ', this.US.user);
+                });
   }
 
   ngOnInit() {

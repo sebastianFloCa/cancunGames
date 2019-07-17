@@ -1,1 +1,29 @@
+.background{
 
+    --background: url(../../assets/bg.jpg) 0 0/100% 100% no-repeat;
+   /*
+     -webkit-filter: blur(5px);
+     -moz-filter: blur(5px);
+     -o-filter: blur(5px);
+     -ms-filter: blur(5px);
+     filter: blur(5px);*/
+   
+   }
+  
+   ion-avatar{
+     --border-radius: 50%;
+   }
+  
+  .butons{
+    width: 230px;
+  }
+  
+  .adjustedImage{
+    width:  65vw;
+    height: 44vw;
+    left: 150px;
+    border:10px solid #f30a0a;
+    border-radius: 50%; // half for rounding */
+    object-fit: cover; /* Scale the image - Center and crop image*/
+  }
+  

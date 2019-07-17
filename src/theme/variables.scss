@@ -76,5 +76,8 @@
   --ion-color-light-tint: #f5f6f9;
 
   /** BG color **/
-  --ion-background-color: #063E89
+  --ion-background-color: #063E89;
+
+  /** Transparent **/
+  --ion-color-transparent: rgba(0, 0, 0, 0.0);
 }
